@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": [
+    "prefer-object-spread",
+    "react"
+  ],
+  "rules": {
+    "curly": "error",
+    "prefer-object-spread/prefer-object-spread": 2,
+    "react/jsx-filename-extension": 0,
+    "react/forbid-prop-types": 0,
+    "react/sort-comp": "off",
+    "react/prefer-stateless-function": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
+    "import/no-unresolved": [2, { "ignore": ["react"] }],
+    "no-plusplus": 0
+  }
+}

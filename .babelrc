@@ -1,0 +1,8 @@
+{
+  "presets": ["env", "react", "airbnb"],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "syntax-dynamic-import"
+  ]
+}
