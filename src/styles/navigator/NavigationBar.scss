@@ -1,0 +1,34 @@
+.navigation-title-container {
+  display: flex;
+}
+
+.search-icon{
+  padding: 7px;
+  color: #765700;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.grid-icon {
+  padding: 10px;
+  font-size: 30px;
+  color: #765700;
+
+  &:hover {
+	color: #221900;
+  }
+}
+
+.search-icon-small-width {
+  padding: 10px;
+  font-size: 30px;
+  color: #765700;
+
+  &:hover {
+	color: #221900;
+  }
+
+  @media only screen and(min-width: 721px) {
+	display: none;
+  }
+}
