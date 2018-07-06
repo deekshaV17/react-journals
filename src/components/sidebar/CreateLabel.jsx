@@ -1,29 +1,48 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+
 import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
-import { connect } from 'react-redux';
 
-import { withStyles } from '@material-ui/core/styles';
+import { checkLabelExists } from "../../scripts/Scripts";
+
+import LabelActions from "../../actions/sidebar/LabelActions";
 import CreateLabelStyles from "../../styles/sidebar/createLabel/CreateLabel";
 
 import '../../styles/sidebar/createLabel/CreateLabel.scss';
-import LabelActions from "../actions/sidebar/LabelActions";
 
-@connect(store => ({store: store}))
+@connect(store => ({labels: store.LabelsReducer.labels}))
 class CreateLabel extends Component {
 
   state = {
     labelName: '',
+    error: '',
   };
 
   handleInputChange = labelName => {
-    this.setState({ labelName });
+    this.setState({
+      labelName,
+      error: '',
+    });
+  };
+
+  handleKeyInput = e => {
+    if (e.which === 13) {
+      this.createLabel();
+    }
   };
 
   createLabel = () => {
-    console.log('ayy');
-    this.props.dispatch(LabelActions.createLabel(this.state.labelName));
-    this.setState({ labelName: '' });
+    if (this.state.labelName !== '') {
+      if (checkLabelExists(this.props.labels, this.state.labelName) === -1) {
+        this.props.dispatch(LabelActions.createLabel(this.state.labelName));
+        this.setState({ labelName: '' });
+      }
+      else {
+        this.setState({ error: 'Label already exists' });
+      }
+    }
   };
 
   render() {
@@ -33,14 +52,26 @@ class CreateLabel extends Component {
         <IconButton className={classes.createLabelIconButton}>
           <i className='material-icons'>clear</i>
         </IconButton>
-        <Input
-          autoFocus
-          value={this.state.labelName}
-          placeholder="Create new label"
-          className={classes.createLabelInput}
-          onChange={e => this.handleInputChange(e.target.value)}
-        />
-        <IconButton className={classes.createLabelIconButton} onClick={() => this.createLabel()}>
+        <div>
+          <Input
+            autoFocus
+            value={this.state.labelName}
+            placeholder="Create new label"
+            className={classes.createLabelInput}
+            onKeyPress={e => this.handleKeyInput(e)}
+            onChange={e => this.handleInputChange(e.target.value)}
+          />
+          {
+            this.state.error !== '' &&
+            <div className='create-label-error'>
+              {this.state.error}
+            </div>
+          }
+        </div>
+        <IconButton
+          className={classes.createLabelIconButton}
+          onClick={() => this.createLabel()}
+        >
           <i className='material-icons'>done</i>
         </IconButton>
       </div>

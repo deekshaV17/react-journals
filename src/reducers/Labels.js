@@ -1,13 +1,5 @@
 const initialState = {
-  labels : [{
-    title: 'abc',
-    id: 'abc',
-    notes: [{
-      id: '1',
-    }, {
-      id: '2',
-    }],
-  }],
+  labels : [],
 };
 
 const LabelsReducer = (state = initialState, action) => {

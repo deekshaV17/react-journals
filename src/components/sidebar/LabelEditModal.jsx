@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import Dialog from '@material-ui/core/Dialog';
-
-import Input from '@material-ui/core/Input';
-import IconButton from '@material-ui/core/IconButton';
+import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 
-import LabelEditModalStyles from '../../styles/sidebar/labelEditModal/LabelEditModal';
-import '../../styles/sidebar/labelEditModal/LabelEditModal.scss';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import IconButton from '@material-ui/core/IconButton';
+
 
 import CreateLabel from "./CreateLabel";
-import {connect} from "react-redux";
+import LabelEditModalStyles from '../../styles/sidebar/labelEditModal/LabelEditModal';
+
+import '../../styles/sidebar/labelEditModal/LabelEditModal.scss';
+
 @connect(store => ({labels: store.LabelsReducer.labels}))
 class LabelEditModal extends Component {
 
@@ -33,20 +35,24 @@ class LabelEditModal extends Component {
     ))
   };
 
+
   render() {
     const { classes } = this.props;
     return (
       <Dialog onClose={this.handleClose} aria-labelledby="simple-dialog-title" open={this.props.open}>
-        <div className='label-edit-modal-container'>
+        <div>
           <ul className='label-edit-modal-list-container'>
             <div className='label-edit-modal-heading'>
               Edit labels
             </div>
             <li>
               <CreateLabel />
-              {this.renderLabelList()}
             </li>
+            {this.renderLabelList()}
           </ul>
+        </div>
+        <div className='label-edit-modal-done-button'>
+          <Button className={classes.labelEditModalDoneButton} onClick={() => this.handleClose()}>Done</Button>
         </div>
       </Dialog>
     );

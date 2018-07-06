@@ -53,7 +53,7 @@ class Labels extends Component {
           />
         </div>
         {this.renderLabelList()}
-        <li className='sidebar-list-item'>
+        <li className='sidebar-list-item' onClick={this.handleClickOpen}>
           <div className='create-label-link'>
             <i className='material-icons svg-icon'>add</i>
             <span className='list-item-title'>Create new label</span>

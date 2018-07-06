@@ -1,21 +1,26 @@
-.label-edit-modal-container {
-  padding: 15px;
-  max-height: 400px;
-}
-
 .label-edit-modal-list-container {
   margin: 0;
-  padding: 0;
+  padding: 15px;
+  overflow: auto;
+  max-height: 400px;
   list-style-type: none;
 }
 
 .label-edit-modal-heading {
-
+  padding: 0 10px;
+  font-weight: 500;
+  font-family: sans-serif;
 }
 
 .label-edit-modal-list-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+}
+
+.label-edit-modal-done-button {
+  text-align: right;
+  padding: 15px 10px;
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 

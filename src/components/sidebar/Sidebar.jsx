@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
-import { NotesIcon, ReminderIcon } from "../svg/SVGIcons";
+import { NotesIcon, ReminderIcon } from "../../svg/SVGIcons";
 import SidebarStyles from '../../styles/sidebar/Sidebar';
 
 import Divider from '@material-ui/core/Divider';

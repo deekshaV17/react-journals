@@ -3,7 +3,6 @@ import { getRandomId } from "../../scripts/Scripts";
 const LabelActions = {
 
   createLabel: payload => dispatch => {
-    console.log('payload', payload);
     const newLabel = {
       title: payload,
       id: getRandomId(),
